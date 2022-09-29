@@ -3,15 +3,15 @@
 \*------------------------------------*/
 
 @font-face {
-    font-family: "Inter Web";
+    font-family: 'Inter Web';
     font-weight: 400;
-    src: url("../fonts/Inter-Regular.woff2") format("woff2")
+    src: url('../fonts/Inter-Regular.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: "Inter Web";
+    font-family: 'Inter Web';
     font-weight: 600;
-    src: url("../fonts/Inter-SemiBold.woff2") format("woff2")
+    src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
 }
 
 /*------------------------------------*\
@@ -28,27 +28,27 @@
     --global-color-alpha-light: hsl(var(--global-color-alpha-h) 100% 65%);
     --global-color-alpha-dark: hsl(var(--global-color-alpha-h) 80% 55%);
     --global-color-alpha-x-dark: hsl(var(--global-color-alpha-h) 65% 35%);
-    --global-color-alpha-transparent: hsl(var(--global-color-alpha-hsl) / .75);
-    --global-color-alpha-x-transparent: hsl(var(--global-color-alpha-hsl) / .3);
+    --global-color-alpha-transparent: hsl(var(--global-color-alpha-hsl) / 0.75);
+    --global-color-alpha-x-transparent: hsl(var(--global-color-alpha-hsl) / 0.3);
 
-    --global-color-neutral-xxxx-light: #F5F6FA;
-    --global-color-neutral-xxx-light: #E2E3E7;
-    --global-color-neutral-xx-light: #caccd4;
-    --global-color-neutral-x-light: #b5b6c0;
-    --global-color-neutral-light: #a0a1ad;
-    --global-color-neutral: #8b8c9a;
-    --global-color-neutral-dark: #757787;
-    --global-color-neutral-x-dark: #606274;
-    --global-color-neutral-xx-dark: #4b4c60;
-    --global-color-neutral-xxx-dark: #35374d;
-    --global-color-neutral-xxxx-dark: #20223a;
+    --global-color-neutral-50: #f5f6fa;
+    --global-color-neutral-100: #e2e3e7;
+    --global-color-neutral-200: #caccd4;
+    --global-color-neutral-300: #b5b6c0;
+    --global-color-neutral-400: #a0a1ad;
+    --global-color-neutral-500: #8b8c9a;
+    --global-color-neutral-600: #757787;
+    --global-color-neutral-700: #606274;
+    --global-color-neutral-800: #4b4c60;
+    --global-color-neutral-900: #35374d;
+    --global-color-neutral-1000: #20223a;
 
     /* border stuff */
     --global-borderRadius: 3px;
     --global-borderWidth: 1px;
 
     /* transitions */
-    --global-transitionTiming-alpha: .1s ease-out;
+    --global-transition-timing-alpha: .1s ease-out;
 
     /* Baseline settings */
     --global-baseline: 8px;
@@ -67,6 +67,12 @@
     /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
     /*  = 72px */
+    --global-input-backgroundColor: White;
+    --global-input-color: var(--global-color-neutral-1000);
+    --global-input-borderColor: var(--global-color-neutral-100);
+    --global-input-hover-borderColor: var(--global-color-neutral-200);
+    --global-input-focus-borderColor: var(--global-color-alpha);
+    --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
 }
 
 /*------------------------------------*\
@@ -81,9 +87,9 @@
 
 html {
     line-height: 1.5;
-    font-family: "Inter Web", Helvetica, arial, sans-serif;
-    color: var(--global-color-neutral-xxxx-dark);
-    background-color: var(--global-color-neutral-xxxx-light);
+    font-family: 'Inter Web', Helvetica, arial, sans-serif;
+    color: var(--global-color-neutral-1000);
+    background-color: var(--global-color-neutral-50);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -210,7 +216,7 @@ hr {
 
 a,
 a:visited {
-    transition: all var(--global-transitionTiming-alpha);
+    transition: all var(--global-transition-timing-alpha);
     color: var(--global-color-alpha);
     outline-color: var(--global-link-BoxShadowColor);
     outline-width: medium;
@@ -232,7 +238,7 @@ input {
 }
 
 input::placeholder {
-    color: var(--global-color-neutral-x-light);
+    color: var(--global-color-neutral-300);
 }
 
 /*------------------------------------*\
@@ -504,7 +510,7 @@ input::placeholder {
     Website main logo
 */
 
-.c-logo {
+.logo {
     height: var(--global-whitespace);
     display: flex;
     align-items: center;
@@ -517,7 +523,7 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-    fill: var(--global-color-neutral-xxxx-dark);
+    fill: var(--global-color-neutral-1000);
 }
 
 .c-logo__path--2 {
@@ -538,7 +544,8 @@ input::placeholder {
     background-color: White;
     margin-bottom: var(--global-whitespace);
     border-radius: var(--global-borderRadius);
-    box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, .075);
+    box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05),
+        0 2px 4px rgba(0, 0, 0, 0.075);
     overflow: hidden;
 }
 
@@ -550,7 +557,7 @@ input::placeholder {
 
 .c-card__footer {
     text-align: center;
-    border-top: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
+    border-top: var(--global-borderWidth) solid var(--global-color-neutral-100);
 }
 
 .c-card__title {
@@ -601,10 +608,10 @@ input::placeholder {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    background-color: var(--global-input-backgroundColor);
+    color: var(--global-input-color);
     border-radius: var(--global-borderRadius);
-    color: var(--global-color-neutral-xxxx-dark);
-    background-color: White;
     font-family: inherit;
     font-size: 16px;
     line-height: calc(var(--global-baseline) * 3);
@@ -614,19 +621,206 @@ input::placeholder {
 }
 
 .c-input:hover {
-    border-color: var(--global-color-neutral-xx-light);
+    /* border-color: var(--global-color-neutral-xx-light); */
+    border-color: var(--global-input-hover-borderColor);
 }
 
 .c-input:focus,
 .c-input:active {
-    border-color: var(--global-color-alpha);
-    box-shadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+    /* border-color: var(--global-color-alpha); */
+    border-color: var(--global-input-focus-borderColor);
+    /* box-shadow: 0 0 0 3px var(--global-color-alpha-x-transparent); */
+    box-shadow: var(--global-input-boxShadow)
 }
 
 /* option input for checkboxes and radio buttons */
 
 .c-option {
     margin-right: var(--global-whitespace-sm);
+}
+
+.c-custom-option__symbol {
+    opacity: 0;
+    transition: opacity var(--global-transition-timing-alpha);
+}
+
+.c-custom-option__fake-input {
+    display: flex;
+
+    width: calc(2*var(--global-baseline));
+    height: calc(2*var(--global-baseline));
+    border: var(--global-borderWidth) solid var(--custom-option-borderColor);
+    background-color: var(--global-input-backgroundColor);
+    margin-right: var(--global-whitespace-sm);
+    transition: border var(--global-transition-timing-alpha);
+}
+
+.c-custom-option__fake-input--checkbox {
+    border-radius: var(--global-borderRadius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-custom-option__fake-input--radio {
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-custom-option {
+    display: flex;
+    align-items: center;
+    --custom-option-borderColor: var(--global-input-borderColor);
+    --custom-option-focus-borderColor: var(--global-input-focus-borderColor);
+    --custom-option-hover-borderColor: var(--global-input-hover-borderColor);
+
+}
+
+.c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+    display: block;
+    width: 10px;
+    height: 10px;
+    fill: var(--global-color-alpha);
+}
+
+.c-custom-option__fake-input--radio .c-custom-option__symbol {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background-color: var(--global-color-alpha);
+}
+
+.c-option--hidden:checked+.c-custom-option .c-custom-option__symbol {
+    opacity: 1;
+}
+
+.c-custom-option:hover {
+    --custom-option-borderColor: var(--custom-option-hover-borderColor);
+}
+
+.c-option--hidden:focus-visible+.c-custom-option .c-custom-option__fake-input,
+.c-custom-option:active .c-custom-option__fake-input {
+    border-color: var(--global-input-focus-borderColor);
+    box-shadow: var(--global-input-boxShadow);
+}
+
+/*
+    Component: option-list
+    ---
+    Class to put on option lists    
+*/
+
+.c-option-list {
+    margin-bottom: var(--global-whitespace-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.c-option-list__item {
+    margin-bottom: 12px;
+}
+
+/*
+    Component: Custom Toggle
+    ---
+    Class to put toggle switches
+*/
+
+.c-custom-toggle__fake-input {
+    display: block;
+    width: calc(6*var(--global-baseline));
+    height: calc(3*var(--global-baseline));
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    background-color: var(--global-color-neutral-50);
+    margin-right: var(--global-whitespace-sm);
+    transition: all var(--global-transition-timing-alpha);
+    border-radius: 24px;
+}
+
+.c-custom-toggle__fake-input::after {
+    content: "";
+    display: block;
+    width: calc(3*var(--global-baseline) - 2*var(--global-borderWidth));
+    height: calc(3*var(--global-baseline) - 2*var(--global-borderWidth));
+    background-color: white;
+    border-radius: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+    transition: all var(--global-transition-timing-alpha);
+    /* transform: translateX(0); */
+}
+
+.c-option--hidden:checked+.c-custom-toggle .c-custom-toggle__fake-input::after {
+    transform: translateX(calc(3*var(--global-baseline)));
+}
+
+.c-option--hidden:checked+.c-custom-toggle .c-custom-toggle__fake-input {
+    background-color: #3385FF;
+    border-color: #2E77E6;
+}
+
+.c-option--hidden:focus-visible+.c-custom-toggle .c-custom-toggle__fake-input {
+    border-color: var(--global-input-focus-borderColor);
+    box-shadow: var(--global-input-boxShadow);
+}
+
+.c-option--hidden:active+.c-custom-toggle .c-custom-toggle__fake-input::after {
+    width: calc(4.5*var(--global-baseline) - 2*var(--global-borderWidth));
+    border-radius: 16px;
+
+}
+
+.c-option--hidden:active:checked+.c-custom-toggle .c-custom-toggle__fake-input::after {
+    transform: translateX(calc(1.5*var(--global-baseline)));
+
+}
+
+.c-custom-toggle {
+    display: flex;
+    align-items: center;
+}
+
+/* 
+    Component: toggle switch list
+*/
+
+.c-toggle-list__item+.c-toggle-list__item {
+    margin-top: var(--global-whitespace-sm);
+}
+
+.c-custom-toggle--inverted {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.c-custom-toggle--inverted .c-custom-toggle__fake-input {
+    margin-right: 0;
+}
+
+
+
+/*
+    Component: custom select
+ */
+.c-custom-select {
+    display: block;
+    position: relative;
+}
+
+.c-custom-select__input {}
+
+.c-custom-select__symbol {
+    width: 24px;
+    height: 24px;
+    fill: var(--global-color-neutral-200);
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    pointer-events: none;
 }
 
 /*
@@ -640,7 +834,7 @@ input::placeholder {
     font-size: 14px;
     padding-bottom: var(--global-whitespace-xs);
     line-height: calc(var(--global-baseline) * 2);
-    color: var(--global-color-neutral-xx-dark);
+    color: var(--global-color-neutral-800);
 }
 
 .c-label--option {
@@ -680,6 +874,22 @@ input::placeholder {
     box-shadow: none;
 }
 
+/* label svg {
+    display: none;
+}
+
+.c-option--hidden:checked+label svg {
+    display: block;
+} */
+/* custom options*/
+/* .c-option--hidden:checked+.c-custom-option {
+    
+      Do magic stuff here, for example:
+      background-color: red;
+   
+    fill: blue;
+} */
+
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
@@ -691,11 +901,11 @@ input::placeholder {
 */
 
 .u-color-neutral {
-    color: var(--global-color-neutral);
+    color: var(--global-color-neutral-500);
 }
 
 .u-color-neutral-dark {
-    color: var(--global-color-neutral-dark);
+    color: var(--global-color-neutral-600);
 }
 
 /*
@@ -761,7 +971,6 @@ input::placeholder {
 .u-max-width-none {
     max-width: none !important;
 }
-
 
 /*
     Utilities: align
@@ -1083,20 +1292,20 @@ No media query since this is the default in mobile first design
     }
 
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: ' (' attr(href) ')';
     }
 
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: ' (' attr(title) ')';
     }
 
     /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
     */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
+    a[href^='#']:after,
+    a[href^='javascript:']:after {
+        content: '';
     }
 
     pre {
