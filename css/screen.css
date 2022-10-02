@@ -75,6 +75,15 @@
     --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --global-background-color: var(--global-color-neutral-1000);
+        --dark-text-color: white
+    }
+
+
+}
+
 /*------------------------------------*\
 #GENERIC
 \*------------------------------------*/
@@ -88,8 +97,8 @@
 html {
     line-height: 1.5;
     font-family: 'Inter Web', Helvetica, arial, sans-serif;
-    color: var(--global-color-neutral-1000);
-    background-color: var(--global-color-neutral-50);
+    color: var(--dark-text-color, var(--global-color-neutral-1000));
+    background-color: var(--global-background-color, var(--global-color-neutral-50));
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -510,7 +519,7 @@ input::placeholder {
     Website main logo
 */
 
-.logo {
+.c-logo {
     height: var(--global-whitespace);
     display: flex;
     align-items: center;
@@ -523,15 +532,23 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-    fill: var(--global-color-neutral-1000);
+    fill: var(--logo__path--1--fill, var(--global-color-neutral-1000));
 }
 
 .c-logo__path--2 {
-    fill: var(--global-color-alpha);
+    fill: var(--logo__path--2--fill, var(--global-color-alpha));
 }
 
 .c-logo__path--3 {
-    fill: var(--global-color-alpha-x-dark);
+    fill: var(--logo__path--3--fill, var(--global-color-alpha-x-dark));
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-logo {
+        --logo__path--1--fill: White;
+        --logo__path--2--fill: var(--logo__path--1--fill);
+        --logo__path--3--fill: var(--logo__path--1--fill);
+    }
 }
 
 /*
@@ -541,12 +558,22 @@ input::placeholder {
 */
 
 .c-card {
-    background-color: White;
+    background-color: var(--card-color, white);
     margin-bottom: var(--global-whitespace);
     border-radius: var(--global-borderRadius);
     box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05),
         0 2px 4px rgba(0, 0, 0, 0.075);
     overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-card {
+        --card-color: var(--global-color-neutral-900);
+    }
+
+    .c-card__footer {
+        --border-color: var(--global-color-neutral-800);
+    }
 }
 
 /* Add padding to child for more flexibility */
@@ -557,7 +584,7 @@ input::placeholder {
 
 .c-card__footer {
     text-align: center;
-    border-top: var(--global-borderWidth) solid var(--global-color-neutral-100);
+    border-top: var(--global-borderWidth) solid var(--border-color, var(--global-color-neutral-100));
 }
 
 .c-card__title {
@@ -602,15 +629,24 @@ input::placeholder {
     ---
     Class to put on all input="text" like form inputs
 */
+@media (prefers-color-scheme: dark) {
+    .c-input {
+        --dark-input-color: var(--global-color-neutral-100);
+        --input-background-color: #21223b;
+        --input-border-color: var(--global-color-neutral-800);
+        --input-placeholder-color: var(--global-color-neutral-600);
+    }
+
+}
 
 .c-input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: var(--global-borderWidth) solid var(--global-input-borderColor);
-    background-color: var(--global-input-backgroundColor);
-    color: var(--global-input-color);
+    border: var(--global-borderWidth) solid var(--global-background-color, var(--global-input-borderColor));
+    background-color: var(--global-background-color, var(--global-input-backgroundColor));
+    color: var(--dark-input-color, var(--global-input-color));
     border-radius: var(--global-borderRadius);
     font-family: inherit;
     font-size: 16px;
@@ -656,6 +692,7 @@ input::placeholder {
 }
 
 .c-custom-option__fake-input--checkbox {
+
     border-radius: var(--global-borderRadius);
     display: flex;
     align-items: center;
@@ -676,6 +713,13 @@ input::placeholder {
     --custom-option-focus-borderColor: var(--global-input-focus-borderColor);
     --custom-option-hover-borderColor: var(--global-input-hover-borderColor);
 
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-custom-option__fake-input--checkbox {
+        background-color: var(--global-color-neutral-1000);
+        border-color: var(--global-color-neutral-1000);
+    }
 }
 
 .c-custom-option__fake-input--checkbox .c-custom-option__symbol {
@@ -829,12 +873,22 @@ input::placeholder {
     Class to put on all form labels
 */
 
+
+
 .c-label {
+    --label-color: var(--global-color-neutral-800);
     margin-bottom: 0;
     font-size: 14px;
     padding-bottom: var(--global-whitespace-xs);
     line-height: calc(var(--global-baseline) * 2);
-    color: var(--global-color-neutral-800);
+    color: var(--label-color);
+    /* To fix -- color  */
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-label {
+        --label-color: var(--global-color-neutral-300);
+    }
 }
 
 .c-label--option {
